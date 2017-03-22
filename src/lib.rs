@@ -113,7 +113,7 @@ impl Cache {
 
         let container = try!(Container::new(cmd, &key.args, &key.env, &container));
 
-        let tuple = try!(container.run(key.input.as_bytes(), Duration::new(5, 0)));
+        let tuple = try!(container.run(key.input.as_bytes(), Duration::new(1000, 0)));
         let (status, mut output, timeout) = tuple;
         if timeout {
             output.extend_from_slice(b"\ntimeout triggered!");

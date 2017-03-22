@@ -1,3 +1,9 @@
+# What the fork?
+
+This fork is a proof of concept for running playpen code inside the browser with WebAssembly or asmjs. 
+
+# Original README
+
 A web interface for running Rust code. It is hosted at
 <https://play.rust-lang.org/>.
 

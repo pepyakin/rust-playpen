@@ -2,17 +2,7 @@
 
 set -o errexit
 
-if [ "$RUST_PLAYPEN_ENV" != "irc" ]; then
-    rustc --version
-fi
-
-RUST_NEW_ERROR_FORMAT=1 TERM=xterm rustc - -o ./out "$@"
+RUST_NEW_ERROR_FORMAT=1 TERM=xterm rustc - --target=asmjs-unknown-emscripten -o ./out.js "$@"
 printf '\377' # 255 in octal
-if [ "${*#*--test}" != "$*" ] && [ "${*#*--color=always}" != "$*" ]; then
-    # For /evaluate.json, we have {test: true, color: true}. Let's make the
-    # output coloured too.  This would be better in web.py, but we don't
-    # have an easy way to allot parameters for ./out.
-    TERM=xterm exec ./out --color=always
-else
-    exec ./out
-fi
+
+cat out.js

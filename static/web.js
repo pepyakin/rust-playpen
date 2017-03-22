@@ -75,7 +75,7 @@
                 }
             }
         };
-        request.timeout = 10000;
+        request.timeout = 1000000;
         request.ontimeout = function() {
             set_result(result, "<p class=error>Connection timed out" +
                 "<p class=error-explanation>Are you connected to the Internet?");
@@ -171,6 +171,7 @@
                     samp = document.createElement("samp");
                     samp.className = "output";
                     samp.innerHTML = formatCompilerOutput(object.program);
+                    eval("(function() {" + object.program + "})();");
                     pre = document.createElement("pre");
                     pre.appendChild(samp);
                     result.appendChild(pre);

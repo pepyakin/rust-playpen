@@ -2,7 +2,7 @@
 
 set -ex
 
-for channel in stable beta nightly; do
+for channel in nightly; do
     docker build \
         --no-cache \
         --force-rm \
